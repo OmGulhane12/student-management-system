@@ -1,6 +1,9 @@
 // For local development use http://localhost:5000.
 // Before publishing, replace the production placeholder with your Render API base URL.
-const API_BASE_URL = (window.API_BASE_URL || "http://localhost:5000").replace(/\/$/, "");
+const API_BASE_URL = (
+  window.API_BASE_URL ||
+  "https://student-management-system-2v86.onrender.com"
+).replace(/\/$/, "");
 
 const form = document.getElementById("student-form");
 const studentList = document.getElementById("student-list");
