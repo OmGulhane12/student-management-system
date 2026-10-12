@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14213d">
+  <meta name="description" content="Student Information Management System">
+  <title>StudentHub | Student Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="StudentHub home">
+      <span class="brand-mark">S</span>
+      <span>Student<span class="brand-light">Hub</span><small>INFORMATION MANAGEMENT</small></span>
+    </a>
+    <span class="topbar-label"><span class="status-dot"></span> Academic Records</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">STUDENT ADMINISTRATION</p>
+        <h1>Student Information<br><span>Management System</span></h1>
+        <p class="hero-copy">Manage student records in one simple, organized workspace.</p>
+      </div>
+      <div class="hero-icon" aria-hidden="true">✦</div>
+    </section>
+
+    <section class="stats" aria-label="Student summary">
+      <article class="stat-card">
+        <div class="stat-icon purple">▤</div>
+        <div><p>Total Students</p><strong id="total-count">—</strong></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon blue">⌂</div>
+        <div><p>Departments</p><strong id="department-count">—</strong></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon green">✓</div>
+        <div><p>Current Status</p><strong class="connected" id="api-status">Checking…</strong></div>
+      </article>
+    </section>
+
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <section class="workspace">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">STUDENT DETAILS</p><h2 id="form-title">Add a student</h2></div>
+          <span class="heading-icon">＋</span>
+        </div>
+        <p class="muted">Enter the details below to add a new record.</p>
+        <form id="student-form">
+          <label for="studentId">Student ID <span>*</span></label>
+          <input id="studentId" name="studentId" placeholder="e.g. ST101" maxlength="30" required>
+          <label for="name">Full name <span>*</span></label>
+          <input id="name" name="name" placeholder="Enter full name" maxlength="100" required>
+          <label for="email">Email address <span>*</span></label>
+          <input id="email" name="email" type="email" placeholder="student@example.com" maxlength="254" required>
+          <label for="department">Department <span>*</span></label>
+          <input id="department" name="department" placeholder="e.g. Computer Engineering" maxlength="100" required>
+          <label for="semester">Semester <span>*</span></label>
+          <select id="semester" name="semester" required>
+            <option value="">Select semester</option>
+            <option value="1">Semester 1</option><option value="2">Semester 2</option>
+            <option value="3">Semester 3</option><option value="4">Semester 4</option>
+            <option value="5">Semester 5</option><option value="6">Semester 6</option>
+            <option value="7">Semester 7</option><option value="8">Semester 8</option>
+          </select>
+          <div class="form-actions">
+            <button class="btn btn-primary" id="submit-btn" type="submit">＋ Add student</button>
+            <button class="btn btn-secondary" id="cancel-edit" type="button" hidden>Cancel</button>
+          </div>
+        </form>
+        <p class="form-footnote"><span>*</span> Required fields</p>
+      </section>
+
+      <section class="panel records-panel">
+        <div class="panel-heading records-heading">
+          <div><p class="eyebrow">DIRECTORY</p><h2>Student records</h2></div>
+          <button id="refresh-btn" class="icon-button" type="button" title="Refresh records" aria-label="Refresh records">↻</button>
+        </div>
+        <div class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input id="search" type="search" placeholder="Search by name, ID, email or department…" aria-label="Search student records">
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>STUDENT</th><th>DEPARTMENT</th><th>SEMESTER</th><th>ACTIONS</th></tr></thead>
+            <tbody id="student-list">
+              <tr><td colspan="4" class="empty">Loading student records…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-footer"><span id="record-count">0 records</span><span>Student directory</span></div>
+      </section>
+    </section>
+    <footer>StudentHub <span>•</span> Three-tier cloud application · Netlify · Render · MongoDB Atlas</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
